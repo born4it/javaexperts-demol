@@ -32,13 +32,59 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 
 ## Plan van aanpak
 
-* Voor te coderen, bestudeer eerst het domein en database model. 
+* Vooraleer te coderen, bestudeer eerst het domein en database model. 
 * Maak een nieuw project aan, voeg pom.xml en persistence.xml toe.
-* Begin bij het domein model en voorzie de nodige fields, constructors en methods.
+* Begin bij het domein model en voorzie de nodige fields, constructors en methoden.
 * Breid de klassen in het domein model uit met nodige JPA annotaties zodat het domein model door het database model gecapteerd te worden.
-* Implementeer de DAOs en gebruik hierbij de aangeleverde testen om de codebase te valideren.@
+* Ga verder in baby steps, nl. implementeer 1 DAO per keer en neem iedere keer de bijhorende test over.
 
 ## Domein model
+
+### Kandidaat
+
+* Een kandidaat wordt uniek geïdentificeerd door id.
+* Een kandidaat heeft een voornaam, geboortedatum, woonplaats, beroep, hobbys, beste eigenschap, slechte eigenschap, lievelingseten, identificeert zich met en lievelingsartiest.
+* Een kandidaat is eventueel geassocieerd met de aflevering waarin hij/zij vertrokken is.
+
+### Aflevering
+
+* Een aflevering wordt uniek geïdentificeerd door nummer.
+* Met iedere aflevering zijn meerder opdrachten geassocieerd.
+* Met iedere aflevering zijn meerdere vragen geassocieerd.
+* Met iedere aflevering zijn meerdere antwoorden geasocieerd, nl. elke resterende kandidaat beantwoord de vragen.
+* Op iedere aflevering wordt de vertrekkende kandidaat bijgehouden.
+
+### Opdracht
+
+* Een opdracht wordt uniek geïdentificeerd door een id.
+* Een opdracht heeft een omschrijving en plaats.
+* Een opdracht is geassocieerd met zijn bijhorende aflevering.
+
+#### Vraag
+
+* Een vraag is een abstract type en kent GeslotenVraag en KeuzeVraag als concrete subtype.
+* Een vraag wordt uniek geïdentificeerd door een id.
+* Iedere vraag heeft een vraagstelling en een correct antwoord.
+
+#### GeslotenVraag
+
+* GeslotenVraag is een subtype van Vraag en kan Ja of Nee als correct antwoord hebben.
+
+#### KeuzeVraag
+
+* KeuzeVraag is een subtype van Vraag en heeft meerdere mogelijke antwoorden waarvan één het juiste antwoord is.
+
+### Antwoord
+
+* Een antwoord wordt uniek geïdentificeerd door een id.
+* Een antwoord wordt gegeven door een kandidaat in een aflevering op een vraag.
+* Het antwoord bevat het eigenlijke antwoord gegeven door de kandidaat.
+
+## DAOs
+
+| DAO                 | Methode                       | Gewenst gedrag |
+| ------------------- | ----------------------------- |------|
+| ``        | ``        |`` |
 
 ![Diagram domein model](https://raw.githubusercontent.com/born4it/javaexperts-demol/master/images/DeMol-DomeinModel.png)
 
