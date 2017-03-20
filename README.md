@@ -34,6 +34,8 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 
 * Vooraleer te coderen, bestudeer eerst het domein en database model. 
 * Maak een nieuw project aan, voeg pom.xml en persistence.xml toe.
+* Download ![OpdrachtDeMol.zip](https://raw.githubusercontent.com/born4it/javaexperts-demol/master/OpdrachtDeMol.zip) en zet de files in de juiste directories.
+* Voer DeMol-Database-Dump.sql op jullie eigen database uit.
 * Begin bij het domein model en voorzie de nodige fields, constructors en methoden. Baseer je hiervoor op de klasse PopuleerDatabase.
 * Breid de klassen in het domein model uit met de nodige JPA annotaties zodat het domein model gemapped kan worden op het database model en vice versa.
 * Implementeer de verschillende DAOs. Doe dit in baby steps, t.t.z. 1 DAO en DAO test per keer.
