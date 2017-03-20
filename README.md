@@ -41,7 +41,7 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 ## Domein model
 
 ### Kandidaat
-
+    
 * Een kandidaat wordt uniek geïdentificeerd door id.
 * Een kandidaat heeft een voornaam, geboortedatum, woonplaats, beroep, hobbys, beste eigenschap, slechte eigenschap, lievelingseten, identificeert zich met en lievelingsartiest.
 * Een kandidaat is eventueel geassocieerd met de aflevering waarin hij/zij vertrokken is.
@@ -82,9 +82,15 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 
 ## DAOs
 
-| DAO                 | Methode                       | Gewenst gedrag |
-| ------------------- | ----------------------------- |------|
-| ``        | ``        |`` |
+| DAO             | Methode                                          | Gewenst gedrag  |
+| --------------- | ------------------------------------------------ | --------------- |
+| `AfleveringDao` | `findAlleAfleveringen`                           |                 |
+| `AfleveringDao` | `findAfleveringInclusiefOpdrachtenMetNummer`     |                 |
+| `AntwoordDao`   | `findAntwoordenVanKandidaatInAflevering`         |                 |
+| `AntwoordDao`   | `findCorrecteAntwoordenVanKandidaatInAflevering` |                 |
+| `OpdrachtDao`   | `findPlaatsMetMeesteOpdrachten`                  |                 |
+| `VraagDao`      | `findVragenMetAantalKeerGesteld`                 |                 |
+
 
 ![Diagram domein model](https://raw.githubusercontent.com/born4it/javaexperts-demol/master/images/DeMol-DomeinModel.png)
 
