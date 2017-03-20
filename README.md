@@ -1,6 +1,6 @@
 # Javaexperts opdracht De Mol
 
-In deze opdracht bouwen we functionaliteit om het televisieprogramma De Mol te ondersteunen. Hierbij beperken we ons tot de business en persistence laag.
+In deze opdracht bouwen we functionaliteit om het televisieprogramma De Mol te ondersteunen. Hierbij beperken we ons tot het domein model en de persistentie laag.
 
 Het domein model en bijhorende DAOs dienen we te implementeren. Testen voor de DAOs worden aangeleverd en kunnen gebruikt te worden voor feedback en validatie.
 
@@ -26,17 +26,17 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 
 ### Java/JPA
 
-* Primary keys worden gegenereerd door database met strategy IDENTITY
+* Primary keys worden gegenereerd door de database met strategy IDENTITY
 * Field accessors
-* Queries moeten named queries zijn
+* Alle queries moeten named queries zijn
 
 ## Plan van aanpak
 
 * Vooraleer te coderen, bestudeer eerst het domein en database model. 
 * Maak een nieuw project aan, voeg pom.xml en persistence.xml toe.
-* Begin bij het domein model en voorzie de nodige fields, constructors en methoden.
-* Breid de klassen in het domein model uit met nodige JPA annotaties zodat het domein model door het database model gecapteerd te worden.
-* Ga verder in baby steps, nl. implementeer 1 DAO per keer en neem iedere keer de bijhorende test over.
+* Begin bij het domein model en voorzie de nodige fields, constructors en methoden. Baseer je hiervoor op de klasse PopuleerDatabase.
+* Breid de klassen in het domein model uit met de nodige JPA annotaties zodat het domein model gemapped kan worden op het database model en vice versa.
+* Implementeer de verschillende DAOs. Doe dit in baby steps, t.t.z. 1 DAO en DAO test per keer.
 
 ## Domein model
 
@@ -53,19 +53,19 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 * Een aflevering wordt uniek geïdentificeerd door nummer.
 * Met iedere aflevering zijn meerder opdrachten geassocieerd.
 * Met iedere aflevering zijn meerdere vragen geassocieerd.
-* Met iedere aflevering zijn meerdere antwoorden geasocieerd, nl. elke resterende kandidaat beantwoord de vragen.
+* Met iedere aflevering zijn meerdere antwoorden geassocieerd, nl. antwoorden van elke resterende kandidaat op de vragen voor deze aflevering.
 * Op iedere aflevering wordt de vertrekkende kandidaat bijgehouden.
 
 ### Opdracht
 
-* Een opdracht wordt uniek geïdentificeerd door een id.
+* Een opdracht wordt uniek geïdentificeerd door id.
 * Een opdracht heeft een omschrijving en plaats.
 * Een opdracht is geassocieerd met zijn bijhorende aflevering.
 
 #### Vraag
 
-* Een vraag is een abstract type en kent GeslotenVraag en KeuzeVraag als concrete subtype.
-* Een vraag wordt uniek geïdentificeerd door een id.
+* Een vraag is een abstract type en kent GeslotenVraag en KeuzeVraag als concrete subtypes.
+* Een vraag wordt uniek geïdentificeerd door id.
 * Iedere vraag heeft een vraagstelling en een correct antwoord.
 
 #### GeslotenVraag
@@ -78,26 +78,28 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 
 ### Antwoord
 
-* Een antwoord wordt uniek geïdentificeerd door een id.
+* Een antwoord wordt uniek geïdentificeerd door id.
 * Een antwoord wordt gegeven door een kandidaat in een aflevering op een vraag.
 * Het antwoord bevat het eigenlijke antwoord gegeven door de kandidaat.
 
-Opmerking:
-In de database wordt niet bijgehouden of antwoord correct is of niet. Bijgevolg kan je geen query schrijven die meteen correcte antwoorden bepaald.
+Merk op dat in de database niet wordt bijgehouden of antwoord correct is of niet. Bijgevolg kan je geen query schrijven die correcte antwoorden direct op de database filtert.
 
 ## DAOs
+
+De DAOs moeten minimaal volgende functionaliteit aanleveren:
 
 | DAO             | Methode                                          | Gewenst gedrag                                              | Niveau      |
 | --------------- | ------------------------------------------------ | ----------------------------------------------------------- | ----------- |
 | `AfleveringDao` | `findAlleAfleveringen`                           | Alle afleveringen, oplopend gesorteerd op nummer            | Basis       |
-| `AfleveringDao` | `findAfleveringInclusiefVragenMetNummer`         | Aflevering voor nummer waarbij vragen meteen zijn opgehaald | Basis       |
+| `AfleveringDao` | `findAfleveringInclusiefVragenMetNummer`         | Aflevering met nummer waarbij vragen meteen zijn opgehaald  | Basis       |
 | `AntwoordDao`   | `findAntwoordenVanKandidaatInAflevering`         | Alle antwoorden voor kandidaat in aflevering                | Basis       |
 | `KandidaatDao`  | `findKandidaten`                                 | Alle kandidaten                                             | Basis       |
 | `AntwoordDao`   | `findCorrecteAntwoordenVanKandidaatInAflevering` | Alle correcte antwoorden voor kandidaat in aflevering       | Geavanceerd |
 | `KandidaatDao`  | `findResterendeKandidaten`                       | Alle kandidaten die nog niet vertrokken zijn                | Geavanceerd |
-| `OpdrachtDao`   | `findPlaatsMetMeesteOpdrachten`                  | Plaats waar de meeste opdrachten plaatsvonden               | Geavanceerd |
+| `OpdrachtDao`   | `findPlaatsMetMeesteOpdrachten`                  | Plaats waar de meeste opdrachten plaatsvond                 | Geavanceerd |
 | `VraagDao`      | `findVragenMetAantalKeerGesteld`                 | Vragen en het aantal keer dat deze werden gesteld           | Geavanceerd |
 
+Je kan de DAOs eventueel zelf uitbreiden met eigen testen die je feedback geven tijdens het uitwerken van het domein model.
 
 ## Database model
 
