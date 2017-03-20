@@ -40,6 +40,8 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 
 ## Domein model
 
+![Diagram domein model](https://raw.githubusercontent.com/born4it/javaexperts-demol/master/images/DeMol-DomeinModel.png)
+
 ### Kandidaat
     
 * Een kandidaat wordt uniek geïdentificeerd door id.
@@ -80,19 +82,22 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 * Een antwoord wordt gegeven door een kandidaat in een aflevering op een vraag.
 * Het antwoord bevat het eigenlijke antwoord gegeven door de kandidaat.
 
+Opmerking:
+In de database wordt niet bijgehouden of antwoord correct is of niet. Bijgevolg kan je geen query schrijven die meteen correcte antwoorden bepaald.
+
 ## DAOs
 
-| DAO             | Methode                                          | Gewenst gedrag  |
-| --------------- | ------------------------------------------------ | --------------- |
-| `AfleveringDao` | `findAlleAfleveringen`                           |                 |
-| `AfleveringDao` | `findAfleveringInclusiefOpdrachtenMetNummer`     |                 |
-| `AntwoordDao`   | `findAntwoordenVanKandidaatInAflevering`         |                 |
-| `AntwoordDao`   | `findCorrecteAntwoordenVanKandidaatInAflevering` |                 |
-| `OpdrachtDao`   | `findPlaatsMetMeesteOpdrachten`                  |                 |
-| `VraagDao`      | `findVragenMetAantalKeerGesteld`                 |                 |
+| DAO             | Methode                                          | Gewenst gedrag                                              | Niveau      |
+| --------------- | ------------------------------------------------ | ----------------------------------------------------------- | ----------- |
+| `AfleveringDao` | `findAlleAfleveringen`                           | Alle afleveringen, oplopend gesorteerd op nummer            | Basis       |
+| `AfleveringDao` | `findAfleveringInclusiefVragenMetNummer`         | Aflevering voor nummer waarbij vragen meteen zijn opgehaald | Basis       |
+| `AntwoordDao`   | `findAntwoordenVanKandidaatInAflevering`         | Alle antwoorden voor kandidaat in aflevering                | Basis       |
+| `KandidaatDao`  | `findKandidaten`                                 | Alle kandidaten                                             | Basis       |
+| `AntwoordDao`   | `findCorrecteAntwoordenVanKandidaatInAflevering` | Alle correcte antwoorden voor kandidaat in aflevering       | Geavanceerd |
+| `KandidaatDao`  | `findResterendeKandidaten`                       | Alle kandidaten die nog niet vertrokken zijn                | Geavanceerd |
+| `OpdrachtDao`   | `findPlaatsMetMeesteOpdrachten`                  | Plaats waar de meeste opdrachten plaatsvonden               | Geavanceerd |
+| `VraagDao`      | `findVragenMetAantalKeerGesteld`                 | Vragen en het aantal keer dat deze werden gesteld           | Geavanceerd |
 
-
-![Diagram domein model](https://raw.githubusercontent.com/born4it/javaexperts-demol/master/images/DeMol-DomeinModel.png)
 
 ## Database model
 
