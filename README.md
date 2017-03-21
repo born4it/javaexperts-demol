@@ -30,6 +30,17 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 * Field accessors
 * Alle queries moeten named queries zijn
 
+### Maven dependencies
+
+Gebruik van volgende Maven dependencies is noodzakelijk:
+
+| groupId       | artificatId             | versionId   | scope |
+| ------------- | ----------------------- |------------ | ----- |
+| org.hibernate | hibernate-entitymanager | 5.2.8.Final |       |
+| mysql         | mysql-connector-java    | 6.0.6       |       |
+| junit         | junit                   | 4.12        | test  |
+| org.hamcrest  | hamcrest-all            | 1.3         | test  |
+
 ## Plan van aanpak
 
 * Vooraleer te coderen, bestudeer eerst het domein en database model. 
