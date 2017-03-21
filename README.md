@@ -45,11 +45,11 @@ Gebruik van volgende Maven dependencies is noodzakelijk:
 
 * Vooraleer te coderen, bestudeer eerst het domein en database model. 
 * Maak een nieuw project aan, voeg pom.xml en persistence.xml toe.
-* Download ![OpdrachtDeMol.zip](https://raw.githubusercontent.com/born4it/javaexperts-demol/master/OpdrachtDeMol.zip) en zet de files in de juiste directories.
+* Download [OpdrachtDeMol.zip](https://raw.githubusercontent.com/born4it/javaexperts-demol/master/OpdrachtDeMol.zip) en zet de files in de juiste directories.
 * Voer DeMol-Database-Dump.sql op jullie eigen database uit.
 * Begin bij het domein model en voorzie de nodige fields, constructors en methoden. Baseer je hiervoor op de klasse PopuleerDatabase.
 * Breid de klassen in het domein model uit met de nodige JPA annotaties zodat het domein model gemapped kan worden op het database model en vice versa.
-* Implementeer de verschillende DAOs. Doe dit in baby steps, t.t.z. 1 DAO en DAO test per keer.
+* Implementeer de verschillende DAOs. Doe dit in baby steps, t.t.z. 1 DAO en bijhoren test en eventueel test methode per keer.
 
 ## Conceptueel
 
@@ -68,7 +68,7 @@ Gebruik van volgende Maven dependencies is noodzakelijk:
 ### Aflevering
 
 * Een aflevering wordt uniek geïdentificeerd door nummer.
-* Met iedere aflevering zijn meerder opdrachten geassocieerd.
+* Met iedere aflevering zijn meerdere opdrachten geassocieerd.
 * Met iedere aflevering zijn meerdere vragen geassocieerd.
 * Met iedere aflevering zijn meerdere antwoorden geassocieerd, nl. antwoorden van elke resterende kandidaat op de vragen voor deze aflevering.
 * Op iedere aflevering wordt de vertrekkende kandidaat bijgehouden.
@@ -103,7 +103,7 @@ Merk op dat in de database niet wordt bijgehouden of antwoord correct is of niet
 
 ## DAOs
 
-De DAOs moeten minimaal volgende functionaliteit aanleveren:
+De DAOs moeten minimaal onderstaande functionaliteit aanleveren. Je kan de DAOs eventueel zelf uitbreiden met eigen testen die je feedback geven tijdens het uitwerken van het domein model.
 
 | DAO             | Methode                                          | Gewenst gedrag                                              | Niveau      |
 | --------------- | ------------------------------------------------ | ----------------------------------------------------------- | ----------- |
@@ -115,8 +115,6 @@ De DAOs moeten minimaal volgende functionaliteit aanleveren:
 | `KandidaatDao`  | `findResterendeKandidaten`                       | Alle kandidaten die nog niet vertrokken zijn                | Geavanceerd |
 | `OpdrachtDao`   | `findPlaatsMetMeesteOpdrachten`                  | Plaats waar de meeste opdrachten plaatsvond                 | Geavanceerd |
 | `VraagDao`      | `findVragenMetAantalKeerGesteld`                 | Vragen en het aantal keer dat deze werden gesteld           | Geavanceerd |
-
-Je kan de DAOs eventueel zelf uitbreiden met eigen testen die je feedback geven tijdens het uitwerken van het domein model.
 
 ## Database model
 
