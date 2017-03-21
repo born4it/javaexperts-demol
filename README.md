@@ -40,6 +40,10 @@ Een SQL script is aangeleverd om de tabellen te creëeren en deze met data op te
 * Breid de klassen in het domein model uit met de nodige JPA annotaties zodat het domein model gemapped kan worden op het database model en vice versa.
 * Implementeer de verschillende DAOs. Doe dit in baby steps, t.t.z. 1 DAO en DAO test per keer.
 
+## Conceptueel
+
+![Conceptueel Diagram](https://raw.githubusercontent.com/born4it/javaexperts-demol/master/images/DeMol-Conceptueel.png)
+
 ## Domein model
 
 ![Diagram domein model](https://raw.githubusercontent.com/born4it/javaexperts-demol/master/images/DeMol-DomeinModel.png)
