@@ -7,7 +7,7 @@
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://javaexperts.be/javaexpertsDB" />
             <property name="javax.persistence.jdbc.user" value="javaexperts" />
-            <property name="javax.persistence.jdbc.password" value="j@v@x1617" />
+            <property name="javax.persistence.jdbc.password" value="?????" />
 
             <!-- Hibernate properties -->
             <property name="hibernate.show_sql" value="true" />
