@@ -7,7 +7,9 @@ import java.util.List;
 @Entity
 @NamedQueries({
         @NamedQuery(name = Aflevering.FIND_ALLE_AFLEVERINGEN
-                , query = "select a from Aflevering as a order by a.nummer")
+                , query = "select a from Aflevering as a order by a.nummer"),
+        @NamedQuery(name = Aflevering.FIND_AFLEVERING_EN_VRAGEN_MET_NUMMER
+                , query = "select a from Aflevering as a join fetch a.vragen where a.nummer = :nummer order by a.nummer"),
 })
 public class Aflevering {
 

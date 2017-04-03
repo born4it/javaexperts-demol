@@ -3,6 +3,10 @@ package javaexperts.demol.domein;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = Antwoord.FIND_ANTWOORDEN_VAN_KANDIDAAT_IN_AFLEVERING
+                , query = "select a from Antwoord a where a.kandidaat.voornaam = :kandidaatVoornaam and a.aflevering.nummer = :afleveringNummer")
+})
 public class Antwoord {
 
     public static final String FIND_ANTWOORDEN_VAN_KANDIDAAT_IN_AFLEVERING = "findAntwoordenVanKandidaatInAflevering";

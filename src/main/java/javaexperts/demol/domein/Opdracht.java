@@ -3,6 +3,10 @@ package javaexperts.demol.domein;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = Opdracht.FIND_PLAATS_MET_MEESTE_OPDRACHTEN
+                , query = "select new javaexperts.demol.domein.PlaatsMetAantalOpdrachten(o.plaats, count(o.plaats)) from Opdracht o group by o.plaats order by count(o.plaats) desc")
+})
 public class Opdracht {
 
     public static final String FIND_PLAATS_MET_MEESTE_OPDRACHTEN = "findPlaatsMetMeesteOpdrachten";

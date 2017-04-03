@@ -5,6 +5,12 @@ import java.util.Date;
 import java.util.Optional;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = Kandidaat.FIND_KANDIDATEN
+            , query = "select k from Kandidaat k order by k.voornaam"),
+    @NamedQuery(name = Kandidaat.FIND_RESTERENDE_KANDIDATEN
+            , query = "select k from Kandidaat k where not exists (select a from Aflevering a where a.vertrekkendeKandidaat = k) order by k.voornaam")
+})
 public class Kandidaat {
 
     public static final String FIND_KANDIDATEN = "findKandidaten";

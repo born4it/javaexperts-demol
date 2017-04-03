@@ -18,4 +18,16 @@ public class AfleveringDao extends Dao {
                 .getResultList();
     }
 
+    public Optional<Aflevering> findAfleveringInclusiefVragenMetNummer(int nummer) {
+        TypedQuery<Aflevering> query = entityManager.createNamedQuery(Aflevering.FIND_AFLEVERING_EN_VRAGEN_MET_NUMMER, Aflevering.class);
+        query.setParameter("nummer", nummer);
+
+        try {
+            return Optional.of(query.getSingleResult());
+
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
+    }
+
 }

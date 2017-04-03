@@ -1,0 +1,9 @@
+drop table if exists Aflevering_Vraag;
+drop table if exists KeuzeVraagAntwoorden;
+drop table if exists KeuzeVraag;
+drop table if exists GeslotenVraag;
+drop table if exists Antwoord;
+drop table if exists Vraag;
+drop table if exists Opdracht;
+drop table if exists Aflevering;
+drop table if exists Kandidaat;
